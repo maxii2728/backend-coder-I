@@ -1,0 +1,24 @@
+<h1>Lista de Productos</h1>
+<div id="productList" style="display: flex; flex-wrap: wrap;">
+    {{#each products}}
+        <div style="border: 1px solid #ccc; margin: 10px; padding: 10px; width: 200px;">
+            <h2>{{this.title}}</h2>
+            <p>Precio: {{this.price}}</p>
+            <p>Descripción: {{this.description}}</p>
+            <button onclick="addToCart('{{this.id}}')">Añadir al Carrito</button>
+            <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+        </div>
+    {{/each}}
+</div>
+<h2>Agregar Producto</h2>
+<form id="productForm">
+    <input type="text" name="title" placeholder="Título" required>
+    <input type="text" name="description" placeholder="Descripción" required>
+    <input type="text" name="code" placeholder="Código" required>
+    <input type="number" name="price" placeholder="Precio" required>
+    <input type="number" name="stock" placeholder="Stock" required>
+    <input type="text" name="category" placeholder="Categoría" required>
+    <button type="submit">Agregar</button>
+</form>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/socket.js"></script>
